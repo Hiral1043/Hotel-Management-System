@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_hotel_policy_list" model="ir.ui.view">
+        <field name="name">hotel.policy.list</field>
+        <field name="model">hotel.policy</field>
+        <field name="arch" type="xml">
+            <list string="Hotel Policies">
+                <field name="name"/>
+                <field name="policy_type"/>
+                <field name="hotel_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_hotel_policy_form" model="ir.ui.view">
+        <field name="name">hotel.policy.form</field>
+        <field name="model">hotel.policy</field>
+        <field name="arch" type="xml">
+            <form string="Hotel Policy">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="policy_type"/>
+                        <field name="hotel_id"/>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hotel_policy_search" model="ir.ui.view">
+        <field name="name">hotel.policy.search</field>
+        <field name="model">hotel.policy</field>
+        <field name="arch" type="xml">
+            <search string="Hotel Policies">
+                <field name="name"/>
+                <field name="policy_type"/>
+                <field name="hotel_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_hotel_policy" model="ir.actions.act_window">
+        <field name="name">Hotel Policies</field>
+        <field name="res_model">hotel.policy</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Hotel Policy.
+            </p>
+        </field>
+    </record>
+
+    
+</odoo>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Main Hotels Menu -->
+    <menuitem id="hotel_hotel_menu"
+              name="Hotels"
+              action="hotel_hotel_action"
+              sequence="1"/>
+
+    <!-- Configurations Menu -->
+    <menuitem id="menu_hotel_configuration_root" 
+              name="Configurations" 
+              parent="hotel_hotel_menu"
+              sequence="3"/>
+    <menuitem
+        id="Rooms_menu"
+        name="Rooms"
+        parent="menu_hotel_configuration_root"
+        sequence="1"/>
+    
+
+     <!-- Rooms Submenu -->
+    <menuitem id="hotel_rooms_menu" 
+              name="Rooms" 
+              action="action_hotel_rooms"
+              parent="Rooms_menu" 
+              sequence="1"/>
+
+    <!-- Room Services Submenu -->
+    <menuitem id="menu_hotel_room_service"
+              name="Room Services"
+              parent="Rooms_menu"
+              action="action_hotel_room_service"
+              sequence="3"/>
+
+    <!-- Room Types Submenu -->
+    <menuitem id="menu_hotel_room_type"
+              name="Room Types"
+              parent="Rooms_menu"
+              action="action_hotel_room_type"
+              sequence="2"/>
+
+    <!-- Room Prices Submenu -->
+    <menuitem id="menu_hotel_room_price"
+              name="Room Prices"
+              parent="Rooms_menu"
+              action="action_hotel_room_price"
+              sequence="4"/>
+
+    <menuitem
+        id="hotel_room_specification_menu"
+        name="Room Specifications"
+        parent="Rooms_menu"
+        action="hotel_room_specification_action"
+        sequence="10"/>
+
+    
+<!-- ================================================================================ -->
+<!-- Hotel Configration  -->
+    <menuitem
+        id="Hotel_menu"
+        name="Hotel"
+        parent="menu_hotel_configuration_root"
+        sequence="2"/>
+
+    <menuitem
+        id="hotel_view_config_action_menu"
+        name="Hotel"
+        parent="Hotel_menu"
+        action="hotel_view_config_action"
+        sequence="1"/>
+
+     <!-- menu to acces hotel amenities -->
+    <menuitem id="hotel_amenities_menu" 
+                name="Hotel Amenities" 
+                parent="Hotel_menu"
+                action = "hotel_amentities_action"
+                sequence = "2"/>
+
+     <!-- Seasons Submenu -->
+    <menuitem id="menu_hotel_season"
+              name="Seasons"
+              parent="Hotel_menu"
+              action="action_hotel_season"
+              sequence="3"/>
+
+    <!-- Policies Submenu -->
+    <menuitem id="menu_hotel_policy" 
+              name="Hotel Policies" 
+              parent="Hotel_menu" 
+              action="action_hotel_policy" 
+              sequence="4"/>
+         <!-- MENU  -->
+    <menuitem id="room_pricelist_menu" 
+                name="Hotel Room Price" 
+                parent="Hotel_menu" 
+                action="action_hotel_pricelist" 
+                sequence="6"/>
+<!-- ====================================================================== -->
+    <menuitem
+        id="hotel_housekeeping_menu"
+        name="Housekeeping"
+        parent="menu_hotel_configuration_root"
+        sequence="10"/>
+
+    <menuitem
+        id="housekeeping_staff_menu"
+        name="Housekeeping Staff"
+        action="hotel_housekeeping_staff_action"
+        parent="hotel_housekeeping_menu"
+        sequence="7"/>
+    <menuitem
+        id="housekeeping_maintainance_menu"
+        name="Maintainance"
+        action="action_maintainance_type"
+        parent="hotel_housekeeping_menu"
+        sequence="8"/>
+
+<!-- Menu Item -->
+    <menuitem id="menu_housekeeping_staff_attendence" 
+            name="Staff Attendance" 
+            parent="hotel_housekeeping_menu" 
+            action="action_housekeeping_staff_attendence"
+            sequence="9"/>
+
+    <menuitem id="menu_housekeeping_planning" 
+                name="Housekeeping Planning" 
+                parent="hotel_housekeeping_menu" 
+                action="action_housekeeping_planning"/>
+
+    <menuitem
+        id="restaurant_menu"
+        name="Restaurants"
+        parent="menu_hotel_configuration_root"
+        sequence="5"/>
+       <!--  Restaurant Menu -->
+    <menuitem id="menu_hotel_restaurant" 
+                name="Hotel Restaurants"
+                parent="restaurant_menu" 
+                action="action_hotel_restaurant"/>
+      <!-- Menu for Hotel Food Items -->
+      <menuitem id="menu_hotel_food_item" 
+                name="Food Items"
+                parent="restaurant_menu" 
+                action="action_hotel_food_item"/>
+    <menuitem
+        id="report_issue_menu"
+        name="Report Issue"
+        parent="menu_hotel_configuration_root"
+        sequence="10"/>
+    
+    <menuitem id="menu_housekeeping_report_issue_view" 
+                name="Raise Issue"
+                parent="report_issue_menu"
+                action="action_housekeeping_report_issue"
+                sequence="1"/>
+    <menuitem id="menu_housekeeping_report_issue" 
+                name="Report Issues View"
+                parent="report_issue_menu"
+                action="action_housekeeping_report_issue_view"/>
+
+<!-- ====================================================================== -->
+        <!-- Booking Menu -->
+    <menuitem id="menu_hotel_booking_root" 
+              name="Bookings" 
+              parent="hotel_hotel_menu"
+              sequence="2"/>
+    <menuitem
+      id="Guest_menu"
+      name="Guest"
+      parent="menu_hotel_booking_root"
+      sequence="10"/>
+
+    <!-- Menu Item for Hotel Guest -->
+    <menuitem id="hotel_guest_menu" 
+            name="Guests Details"
+            parent="Guest_menu" 
+            action="hotel_guest_action" 
+            sequence = "1"/>
+
+   <menuitem
+            id="hotel_restaurant_menu"
+            name="Restaurants"
+            action="action_hotel_restaurant_user"
+            parent="Guest_menu"
+            sequence="2"/>
+<!-- reservation menu -->
+    <menuitem
+        id="hotel_room_reservation_menu"
+        name="Room Reservations"
+        action="hotel_room_reservation_action"
+        parent="menu_hotel_booking_root"
+        sequence="100"/>
+</odoo>

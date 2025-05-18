@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hotel_room_available_view_kanban" model="ir.ui.view">
+        <field name="name">hotel_room_available.view.kanban</field>
+        <field name="model">hotel.rooms</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="room_type_id"  groups_draggable="0" records_draggable="0" create="false" edit="false">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_content">
+                                <div class="oe_kanban_details">
+                                    <strong>
+                                        <span>Hotel : </span>
+                                        <field name="hotel_id" />
+                                    </strong>
+                                    <div>
+                                        <field name="image" widget="image"/>
+                                    </div>
+                                    <div>
+                                        <strong>Room Number : </strong>
+                                        <field name="room_no" />
+                                    </div>
+                            
+                                    <div>
+                                        <strong>Price : </strong>
+                                        <field name="price" />
+                                    </div>
+
+                                    <div>
+                                        <strong>Capacity : </strong>
+                                        <field name="room_status" />
+                                    </div>
+                                    <div>
+                                        <button name="book_room" string="Book Room" type="object" class="oe_highlight"  invisible="show_book_button == False" />                
+                                        <button name="add_extra_room" string="Add Room" type="object" class="oe_highlight" invisible="show_add_button == False"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+            
+        </field>
+    </record>
+
+    <record id="view_hotel_rooms_available_form" model="ir.ui.view">
+        <field name="name">hotel.rooms.available.form</field>
+        <field name="model">hotel.rooms</field>
+        <field name="arch" type="xml">
+            <form string="Hotel Room" create="false" edit="false">
+                <sheet> 
+                    <button name="book_room" string="Book Room" type="object" class="oe_highlight"  invisible="show_book_button == False" />                
+
+                    <group>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="room" readonly="1"/>
+                            </h1>
+                        </div>
+                        <!-- <field name="image" widget="image" /> -->
+                        <field name="hotel_id"/>
+                        <field name="room_no"/>
+                        <field name="floor"/>
+                        <field name="capacity" />
+                        <field name="price" />
+                        <field name="room_type_id"/>
+                        <field name="room_status"/>
+                        
+                    </group>
+                    <group>
+                        <!-- <field name="image_ids">
+                            <list> -->
+                                <field name="image" widget="image"/>
+                            <!-- </list>
+                        </field> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hotel_room_available_action" model="ir.actions.act_window">
+    <field name="name">Available Rooms</field>
+    <field name="res_model">hotel.rooms</field>
+    <!-- <field name="view_mode">kanban,form</field> -->
+    <field name="view_ids" eval="[(5, 0, 0),
+                                    (0, 0, {'view_mode': 'kanban', 'view_id': ref('hotel_room_available_view_kanban')}),
+                                    (0, 0, {'view_mode': 'form', 'view_id': ref('view_hotel_rooms_available_form')})]"/>
+</record>
+</odoo>

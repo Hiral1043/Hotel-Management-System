@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_maintainance_type_form" model="ir.ui.view">
+        <field name="name">maintainance.type.form</field>
+        <field name="model">housekeeping.maintainance.type</field>
+        <field name="arch" type="xml">
+            <form string="Housekeeping Staff">
+                <sheet>
+                    <group>
+                            <field name="name"/>
+                            <field name="staff_ids" widget='many2many_tags'/>
+                            <field name="check_list" widget='many2many_tags'/>
+                            <notebook>
+                                <page name="service" string="Services">
+                                    <field name="maintainance_service_ids">
+                                        <list>
+                                            <field name="maintainance_date" />
+                                            <!-- <field name="maintainance_type_id" /> -->
+                                            <field name="status" />
+                                            <field name="room_id" widget='many2many_tags'/>
+                                            <field name="services" widget='many2many_tags'/>
+                                            <field name="staff_ids" />
+                                        </list>
+
+                                    </field>
+
+                                </page>
+                            </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_maintainance_type_list" model="ir.ui.view">
+        <field name="name">maintainance.type.tree</field>
+        <field name="model">housekeeping.maintainance.type</field>
+        <field name="arch" type="xml">
+            <list string="Housekeeping Staff">
+                <field name="name"/>
+                <field name="staff_ids"/>
+                <field name="maintainance_service_ids"/>
+                <field name="staff_ids" />
+                <field name="check_list" widget="many2many_tags"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_maintainance_type" model="ir.actions.act_window">
+        <field name="name">Maintainance</field>
+        <field name="res_model">housekeeping.maintainance.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
+</odoo>

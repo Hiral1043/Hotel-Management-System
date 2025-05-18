@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hotel_booking_view_wizard_form" model="ir.ui.view">
+        <field name="name">hotel_booking.view.wizard.form</field>
+        <field name="model">available.room.wizard</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="check_in_date" />
+                            <field name="adults" />
+                            <field name="child" />
+                        </group>
+                        <group >
+                            <field name="check_out_date" /> 
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="action_search" string="Show available rooms" type="object" class="oe_highlight"/>
+                        <button name="action_cancel" string="Cancel" type="object" class="oe_highlight"/>
+                        
+                    </footer>
+                    
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="hotel_available_rooms_wizard_action" model="ir.actions.act_window">
+        <field name="name">Available Rooms</field>
+        <field name="res_model">available.room.wizard</field>
+        <field name="view_mode">form</field>
+    </record>
+
+</odoo>

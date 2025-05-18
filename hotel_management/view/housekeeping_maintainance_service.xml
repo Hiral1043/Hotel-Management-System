@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_housekeeping_maintainance_service_form" model="ir.ui.view">
+        <field name="name">housekeeping.maintainance.service.form</field>
+        <field name="model">maintainance.service</field>
+        <field name="arch" type="xml">
+            <form string="Housekeeping Maintainance Service">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="maintainance_date"/>
+                            <field name="status"/>
+                            <field name="room_id" widget='many2many_tags'/>
+                            <field name="services" widget='many2many_tags'/>
+                            <field name="staff_ids" widget='many2many_tags'/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_housekeeping_maintainance_service" model="ir.actions.act_window">
+        <field name="name">Housekeeping Maintainance Service</field>
+        <field name="res_model">maintainance.service</field>
+        <field name="view_mode">form</field>
+    </record>
+
+</odoo>

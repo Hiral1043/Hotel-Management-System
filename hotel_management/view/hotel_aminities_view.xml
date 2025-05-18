@@ -1,0 +1,39 @@
+<odoo>
+    <record id="view_hotel_amenities_form" model="ir.ui.view">
+        <field name="name">hotel.amenities.form</field>
+        <field name="model">hotel.amenities</field>
+        <field name="arch" type="xml">
+            <form string="Hotel Amenities">
+                <sheet>
+                    <group>
+                        <field name="hotel_id"/>
+                        <field name="name"/>
+                        <field name="amenity_type"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hotel_amenities_list" model="ir.ui.view">
+        <field name="name">hotel.amenities.list</field>
+        <field name="model">hotel.amenities</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="hotel_id"/>
+                <field name="name"/>
+                <field name="amenity_type"/>
+                <field name="description"/>
+            </list>
+        </field>
+    </record>
+    <record id="hotel_amentities_action" model="ir.actions.act_window">
+        <field name="name">Amentities</field>
+        <field name="res_model">hotel.amenities</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+   
+</odoo>

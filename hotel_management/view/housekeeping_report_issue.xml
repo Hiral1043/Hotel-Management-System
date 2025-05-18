@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    
+    <record id="view_housekeeping_report_issue_form" model="ir.ui.view">
+        <field name="name">housekeeping.report.issue.form</field>
+        <field name="model">housekeeping.report.issue</field>
+        <field name="arch" type="xml">
+            <form string="Housekeeping Report Issue">
+                <sheet>
+                    <group>
+                        <field name="issue_date"/>
+                        <field name="guest_name"/>
+                        <field name="hotel_id"/>
+                        <field name="room_id"/>
+                        <field name="issue_type" />
+                        <field name="maintainance_type_id"/>
+                        <field name="status"/>
+                        <field name="issue_description"/>
+                        <field name="solution" invisible="status == 'reported'"/>
+                        <field name="solved_by" invisible="status == 'reported'"/>
+                        <field name="solved_date" invisible="status == 'reported'"/>
+                       
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_housekeeping_report_issue" model="ir.actions.act_window">
+        <field name="name">Housekeeping Report Issues</field>
+        <field name="res_model">housekeeping.report.issue</field>
+        <field name="view_mode">form</field>
+        <field name ='target'>new</field>
+    </record>
+
+   
+
+</odoo>

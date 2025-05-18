@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_housekeeping_check_list_form" model="ir.ui.view">
+        <field name="name">housekeeping.checklist.form</field>
+        <field name="model">housekeeping.check.list</field>
+        <field name="arch" type="xml">
+            <form string="Housekeeping Check List">
+                <sheet>
+                    <group>
+                            <field name="name" />
+                
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+   
+    <record id="action_housekeeping_check_list" model="ir.actions.act_window">
+        <field name="name">Housekeeping Check List</field>
+        <field name="res_model">housekeeping.check.list</field>
+        <field name="view_mode">form</field>
+    </record>   
+</odoo>

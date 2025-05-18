@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_housekeeping_planning_list" model="ir.ui.view">
+        <field name="name">housekeeping.planning.list</field>
+        <field name="model">housekeeping.planning</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="staff_ids"/>
+                <field name="room_ids"/>
+                <field name="maintainance_type_ids"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_housekeeping_planning_form" model="ir.ui.view">
+        <field name="name">housekeeping.planning.form</field>
+        <field name="model">housekeeping.planning</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="staff_ids" widget="one2many_list"/>
+                    <field name="room_ids" widget="many2many_tags"/>
+                    <field name="maintainance_type_ids" />
+                </group>
+                <!-- <footer>
+                    <button name="action_save" string="Save" type="object" class="btn-primary"/>
+                    <button name="action_cancel" string="Cancel" type="object" class="btn-secondary"/>
+                </footer> -->
+            </form>
+        </field>
+    </record>
+
+    <record id="action_housekeeping_planning" model="ir.actions.act_window">
+        <field name="name">Housekeeping Planning</field>
+        <field name="res_model">housekeeping.planning</field>
+        <field name="view_mode">list,form</field>
+        <field name="target">current</field>
+    </record>
+
+</odoo>

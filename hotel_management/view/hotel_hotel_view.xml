@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="hotel_hotel_view_kanban" model="ir.ui.view">
+            <field name="name">hotel_hotel.view.kanban</field>
+            <field name="model">hotel.hotel</field>
+            <field name="arch" type="xml">
+                <kanban create="false" groups_draggable="0" records_draggable="0">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="oe_kanban_content">
+                                    <div class="oe_kanban_image">
+                                        <field name="image" widget="image"/>
+                                    </div>
+                                    <div class="oe_kanban_details">
+                                        <strong><field name="hotel_name"/></strong>
+                                        <div class="oe_kanban_partner">
+                                            <strong>Location </strong>
+                                            <field name="location" /> <br/>
+                                            <field name="ratings" widget="priority"/>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="hotel_hotel_view_search" model="ir.ui.view">
+            <field name="name">hotel_hotel.view.search</field>
+            <field name="model">hotel.hotel</field>
+            <field name="arch" type="xml">
+                <search string="">
+                    <group>
+                        <filter name="filter_hotel_location" string="Location"
+                        context="{'group_by': 'location'}" /> 
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="hotel_hotel_view_form" model="ir.ui.view">
+            <field name="name">hotel_hotel.view.form</field>
+            <field name="model">hotel.hotel</field>
+            <field name="arch" type="xml">
+                <form string="" create="false" edit="false">                                                                                                                                                                        
+                    <sheet>
+                        <group>
+                        <group name="hotel_details" string="Hotel Details">
+
+                            <field name="image"  string = "" widget="image" readonly="True" />
+                            <field name="ratings" widget="priority" string="Hotel Rating" readonly="True"/>
+                            <!-- options="{'max': 5}"  -->
+                            <button name="action_show_available_room" string="Show available Rooms" type="object" class="oe_highlight"/>
+                            
+                        </group>
+                            <group name ="hotel_details" string="Hotel Details">
+                                <field name="hotel_name" readonly="True" />
+                                <field name="location" readonly="True"/>
+                                <field name="landmarks" readonly="True" />
+                                <field name="amenities_ids" widget="many2many_checkboxes" readonly="True"/>
+                            </group>
+                            <notebook>
+                                    <page name="service" string="Services">
+                                         <field name="services_ids" readonly="True">
+
+                                            <list options="{'no_open': True}" readonly="True">
+                                                <field name="service_name" readonly="True"/>
+                                            </list>
+                                        </field>
+                                    </page>
+                                    <page name="policies" string="Policies">
+                                        <field name="policies_ids" readonly="True">
+                                            <list readonly="True">
+                                                <field name="name" readonly="True"/>
+                                                <field name="description" readonly="True"/>
+                                            </list>
+                                        </field>
+                                    </page>
+                                </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <record id="hotel_hotel_action" model="ir.actions.act_window">
+        <field name="name">Hotels</field>
+        <field name="res_model">hotel.hotel</field>
+        <field name="context">{'group_by': 'location'}</field>
+         <field name="view_ids"
+                eval="[(5, 0, 0),
+                        (0, 0, {'view_mode': 'kanban', 'view_id': ref('hotel_hotel_view_kanban')}),
+                        (0, 0, {'view_mode': 'form', 'view_id': ref('hotel_hotel_view_form')})]"/>
+    </record>
+
+</odoo>

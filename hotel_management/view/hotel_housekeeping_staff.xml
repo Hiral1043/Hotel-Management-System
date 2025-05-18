@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hotel_housekeeping_staff_list_view" model="ir.ui.view">
+        <field name="name">hotel.housekeeping.staff.list</field>
+        <field name="model">hotel.housekeeping.staff</field>
+        <field name="arch" type="xml">
+            <list string="Housekeeping Staff">
+                <field name="name"/>
+                <field name="hotel_id"/>
+                <field name="room_ids"/>
+                <field name="phone" />
+                <field name="email" />
+                <field name="age" />
+                <field name="job_profile" />
+                <field name="identity_proof" />
+                <field name="identity_proof_number" />
+                <field name="identity_proof_image" />
+            </list>
+        </field>
+    </record>
+
+    <record id="hotel_housekeeping_staff_form_view" model="ir.ui.view">
+        <field name="name">hotel.housekeeping.staff.form</field>
+        <field name="model">hotel.housekeeping.staff</field>
+        <field name="arch" type="xml">
+            <form string="Housekeeping Staff">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="hotel_id"/>
+                            <field name="phone" />
+                            <field name="email" />
+                            <field name="age" />
+                            <field name="job_profile" />
+                            <field name="room_ids"/>
+                        </group>
+                        <group>
+                            <field name="identity_proof" />
+                            <field name="identity_proof_number" />
+                            <field name="identity_proof_image" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hotel_housekeeping_staff_action" model="ir.actions.act_window">
+        <field name="name">Housekeeping Staff</field>
+        <field name="res_model">hotel.housekeeping.staff</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="hotel_housekeeping_staff_list_view"/>
+    </record>
+
+ 
+</odoo>

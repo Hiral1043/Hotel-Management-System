@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_hotel_season_list" model="ir.ui.view">
+        <field name="name">hotel.season.list</field>
+        <field name="model">hotel.season</field>
+        <field name="arch" type="xml">
+            <list string="Hotel Seasons">
+                <field name="name"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="non_refundable"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_hotel_season_form" model="ir.ui.view">
+        <field name="name">hotel.season.form</field>
+        <field name="model">hotel.season</field>
+        <field name="arch" type="xml">
+            <form string="Hotel Season">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                    <group>
+                        <field name="non_refundable"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_hotel_season_search" model="ir.ui.view">
+        <field name="name">hotel.season.search</field>
+        <field name="model">hotel.season</field>
+        <field name="arch" type="xml">
+            <search string="Hotel Seasons">
+                <field name="name"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="non_refundable"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_hotel_season" model="ir.actions.act_window">
+        <field name="name">Hotel Seasons</field>
+        <field name="res_model">hotel.season</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Hotel Season.
+            </p>
+        </field>
+    </record>
+
+   
+</odoo>

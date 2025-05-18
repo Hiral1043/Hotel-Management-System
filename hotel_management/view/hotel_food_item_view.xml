@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Tree View for Hotel Food Items -->
+    <record id="view_hotel_food_item_list" model="ir.ui.view">
+        <field name="name">hotel.food.item.list</field>
+        <field name="model">hotel.food.item</field>
+        <field name="arch" type="xml">
+            <list string="Hotel Food Items">
+                <field name="name"/>
+                <field name="price"/>
+                <field name="restaurant_id"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View for Hotel Food Items -->
+    <record id="view_hotel_food_item_form" model="ir.ui.view">
+        <field name="name">hotel.food.item.form</field>
+        <field name="model">hotel.food.item</field>
+        <field name="arch" type="xml">
+            <form string="Food Item">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="food_image" />
+
+                        <field name="price"/>
+                        <field name="restaurant_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hotel_food_item_view_kanban" model="ir.ui.view">
+        <field name="name">hotel.food.item.view.kanban</field>
+        <field name="model">hotel.food.item</field>
+        <field name="arch" type="xml">
+            <kanban color="color" create= "false" default_group_by="restaurant_id"  groups_draggable="0" records_draggable="0" >
+                <templates>
+                    <t t-name="card" class="flex-row">
+                        <aside class="o_kanban_aside_full">
+                            <field name="food_image" class="o_kanban_image_fill w-100" widget="image" options="{'img_class': 'object-fit-cover'}"/>
+                        </aside>
+                        <main class="ps-2 ps-md-0">
+                            <field name="name" class="fw-bold"/>
+                            <field name="description" />
+                            <field name="price" />
+                            <div class="oe_button_box" name="button_box">
+                                <button name="order_meal" string="Order Now" type="object" class="btn btn-outline-primary" />
+                            </div>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Action for Hotel Food Items -->
+    <record id="action_hotel_food_item" model="ir.actions.act_window">
+        <field name="name">Hotel Food Items</field>
+        <field name="res_model">hotel.food.item</field>
+        <field name="view_mode">kanban,list,form</field>
+       
+    </record>
+
+  
+</odoo>

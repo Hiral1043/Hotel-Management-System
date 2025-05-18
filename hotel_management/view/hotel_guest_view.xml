@@ -1,0 +1,91 @@
+<odoo>
+    <!-- Form View for Hotel Guest -->
+    <record id="hotel_guest_form_view" model="ir.ui.view">
+        <field name="name">hotel.guest.form</field>
+        <field name="model">hotel.guest</field>
+        <field name="arch" type="xml">
+            <form string="Hotel Guest">  
+                <sheet>
+                    <field name="guest_photo" widget="image" class="oe_avatar" />
+                    <group name="guest_info" string="Guest Information">
+                        <group>
+                            <field name="guest_id" widget="char" readonly="1"/>
+
+                            <field name="name" />
+                            <field name="guest_phone"/>
+                            <field name="guest_gender"/>
+                            <field name="guest_dob"/>
+                            <field name="age" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="address"/>
+                            <field name="email"/>
+                        </group>
+                    </group>
+
+                    <group name="identity_details" string="Identity Proof Details">
+                        <group>
+                            <field name="identity_proof"/>
+                            <field name="identity_proof_number"/>
+                        </group>
+                        <group>
+                            <field name="identity_proof_image" widget="image"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- List View for Hotel Guest -->
+    <record id="hotel_guest_list_view" model="ir.ui.view">
+        <field name="name">hotel.guest.list</field>
+        <field name="model">hotel.guest</field>
+        <field name="arch" type="xml">
+            <list string="Hotel Guests">
+                <field name="guest_id"/>
+                <field name="name" />
+                <field name="guest_phone"/>
+                <field name="guest_gender"/>
+                <field name="guest_dob"/>
+                <field name="age"/>
+                <field name="email"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Kanban View for Hotel Guest -->
+    <record id="hotel_guest_kanban_view" model="ir.ui.view">
+        <field name="name">hotel.guest.kanban</field>
+        <field name="model">hotel.guest</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_content">
+                                <div class="oe_kanban_image">
+                                    <field name="guest_photo" widget="image"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <strong>Guest ID:</strong><field name="guest_id"/>
+                                    <div class="oe_kanban_partner">
+                                        <strong>Name: </strong><field name="name"/><br/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Action for Hotel Guest -->
+    <record id="hotel_guest_action" model="ir.actions.act_window">
+        <field name="name">Hotel Guest</field>
+        <field name="res_model">hotel.guest</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+
+   </odoo>
